@@ -1,18 +1,27 @@
-import React from 'react';
-import CountryList from './components/Country-List';
-import NavBar from './components/Navbar';
-import Search from './components/Search';
-import Global from './styles/global';
+import React from "react";
+import { Home } from "./components/Home";
 
-function App() {
-  return (
-    <div>
-      <Global/>
-      <NavBar />
-      <Search />
-      <CountryList/>
-    </div>
-  );
-}
+
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider
+} from "@apollo/client";
+import Navbar from "./components/Navbar";
+
+
+const client = new ApolloClient({
+  uri: 'https://countries.trevorblades.com/',
+  cache: new InMemoryCache()
+});
+
+const App: React.FC = () => (
+  <>
+    <Navbar />
+    <ApolloProvider client={client}>
+      <Home />
+    </ApolloProvider>
+  </>
+);
 
 export default App;

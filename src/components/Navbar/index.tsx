@@ -1,11 +1,13 @@
 import React from 'react';
-import {Container} from "./styles"
+import { Container } from "./styles"
 
 const NavBar:React.FC = () => {
   return (
+    <>
     <Container>
       <span>Countries Catalog here</span>
-    </Container>
+      </Container>
+    </>
   )
 }
 
